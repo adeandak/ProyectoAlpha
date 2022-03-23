@@ -6,6 +6,8 @@ import java.net.Socket;
 
 public class TCP extends Thread{
 
+    Administrador adm;
+    Game juego;
     ServerSocket listenSocket;
 
     public TCP(int serverPort){
@@ -14,6 +16,14 @@ public class TCP extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setAdm(Administrador adm) {
+        this.adm = adm;
+    }
+
+    public void setJuego(Game juego) {
+        this.juego = juego;
     }
 
     @Override

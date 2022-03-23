@@ -9,12 +9,18 @@ import java.net.SocketException;
 
 public class Multicast extends Thread{
 
+
+    Administrador adm;
     boolean sigueJuego=true;
     String IPMul="228.5.6.7";
     int Puerto=49155;
     MulticastSocket s=null;
     InetAddress group=null;
     String ganador="";
+
+    public void setAdm(Administrador adm) {
+        this.adm = adm;
+    }
 
     public void MandaMulticast(){
         MulticastSocket socket = null;
@@ -32,6 +38,12 @@ public class Multicast extends Thread{
         } finally {
             if (s != null) socket.close();
         }
+    }
+
+    public void ganador(String usr){
+        System.out.println(usr);
+        this.ganador=usr;
+        this.sigueJuego=false;
     }
 
     @Override
